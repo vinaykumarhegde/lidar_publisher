@@ -9,4 +9,6 @@
 	<node name="lidar_publisher" pkg="lidar_publisher" type="lidar_publisher_node" output="screen" />
 	<!-- publish static tf	1m above base_frame and no rotations. -->
 	<node pkg="tf" type="static_transform_publisher" name="lidar_tf" args="0 0 1 0 0 0 1 base_link lidar_frame 50" />
+	<!-- start rviz for visualization -->
+	<node pkg="rviz" type="rviz" name="rviz_visualization" args="$(find lidar_publisher)/rviz/rviz_demo.rviz"/>
 </launch>

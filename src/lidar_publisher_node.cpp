@@ -38,6 +38,8 @@ int main(int argc, char* argv[]){
 
 	int count = 0;
 
+	srand(0);
+
 	ros::Rate freq(1.0); //Ros rate controller.
 
 	//Create ranges and intensities pointers and allocate memories.
@@ -46,12 +48,14 @@ int main(int argc, char* argv[]){
 
 	while(ros::ok()){
 	    for(size_t i = 0; i < num_readings; ++i){
-			ranges[i] = count;
-			intensities[i] = 100 + count;
+	    	// ranges to have 1+random value; random value is in [0.00 - 0.01]
+			ranges[i] = 1 + static_cast<double>(rand())/(100*static_cast<double>(RAND_MAX));
+			// intensity to have 100 + random value [0-10]
+			intensities[i] = 100  + 10*static_cast<double>(rand())/(static_cast<double>(RAND_MAX));;
 	    }
 	    ros::Time scan_time = ros::Time::now();
 
-	    //populate the LaserScan message
+	    // Create a LaserScan Message
 	    sensor_msgs::LaserScan scan;
 	    scan.header.stamp = scan_time;
 	    scan.header.frame_id = "lidar_frame";

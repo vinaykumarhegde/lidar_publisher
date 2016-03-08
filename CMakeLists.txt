@@ -7,6 +7,7 @@ project(lidar_publisher)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
