@@ -36,8 +36,6 @@ int main(int argc, char* argv[]){
 
 	ROS_INFO("lidar_publisher node started.");
 
-	int count = 0;
-
 	srand(0);
 
 	ros::Rate freq(1.0); //Ros rate controller.
@@ -74,7 +72,6 @@ int main(int argc, char* argv[]){
 	    }
 
 	    lidar_pub.publish(scan);
-	    ++count;
 	    freq.sleep();
 	}
 
